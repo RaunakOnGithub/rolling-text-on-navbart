@@ -1,0 +1,85 @@
+/* A very basic CSS reset */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* ... (Your font import and reset are fine) ... */
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-family: "DM Sans", sans-serif;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    background-color: #161616;
+}
+.container{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* This is the <a> tag, our "viewport" */
+.rolling-text {
+    display: inline-block;
+    font-size: 70px;
+    line-height: 100px;
+    text-decoration: none;
+    height: 100px; /* This height is the "window" */
+    overflow: hidden; /* This hides the text that moves out */
+    color: #fff;
+}
+
+/* The JS creates two .block divs inside the <a> tag */
+
+/* This colors the text in the SECOND block (the one that rolls in) */
+.rolling-text .block:last-child {
+    color: #c93d4b;
+}
+
+/* The individual letters */
+.rolling-text .letter {
+    display: inline-block; /* Allows transforms */
+}
+
+/* This "media query" block only applies to screens
+   768px wide or smaller (like tablets and phones) */
+   @media (max-width: 768px) {
+    
+    .container {
+        /* Change from a horizontal row to a vertical column */
+        flex-direction: column;
+        
+        /* Center the links in the column */
+        align-items: center; 
+        
+        /* Add a little space between the links */
+        gap: 10px; 
+        
+        width: 90%; /* Use more of the screen */
+    }
+
+    .rolling-text {
+        /* CRITICAL: Reduce the font size for mobile */
+        font-size: 40px; 
+        
+        /* Adjust height and line-height to match the new font */
+        line-height: 60px;
+        height: 60px;
+    }
+}
+
+/* You can even add another one for very small phones */
+@media (max-width: 480px) {
+    .rolling-text {
+        font-size: 32px; 
+        line-height: 50px;
+        height: 50px;
+    }
+}
